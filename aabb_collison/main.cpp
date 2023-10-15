@@ -52,26 +52,21 @@ public:
 
 private:
     float speed;
+
     sf::Vector2f direction = sf::Vector2f(0.0f, 0.0f);
     sf::RectangleShape rect;
 
     void horizontalMovement(float deltaTime)
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        direction.x = 0.0f;
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            direction.x = 0.0f;
+            direction.x =-1.0f;
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            direction.x = -1.0f;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             direction.x = 1.0f;
-        }
-        else
-        {
-            direction.x = 0.0f;
         }
 
         rect.move(sf::Vector2f(direction.x * deltaTime * speed, 0.0f));
@@ -97,21 +92,15 @@ private:
 
     void verticalMovement(float deltaTime)
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            direction.y = 0.0f;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        direction.y = 0.0f;
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             direction.y = -1.0f;
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             direction.y = 1.0f;
-        }
-        else
-        {
-            direction.y = 0.0f;
         }
 
         rect.move(sf::Vector2f(0.0f, direction.y * deltaTime * speed));
@@ -171,14 +160,14 @@ void loadLevel(
     float x;
     float y;
 
-    float collom_index = 0.0f;
+    unsigned int column_index = 0;
 
     while (std::getline(file, line))
     {
-        for (float row_index = 0.0f; row_index < line.length(); row_index++)
+        for (unsigned int row_index = 0; row_index < line.length(); row_index++)
         {
             x = row_index * 48.0f;
-            y = collom_index * 48.0f;
+            y = column_index * 48.0f;
 
             if (line[row_index] == 't') // t - tile
             {
@@ -193,7 +182,7 @@ void loadLevel(
                     sf::Vector2f(x, y)));       // player pos
             }
         }
-        collom_index++;
+        column_index++;
     }
 }
 
