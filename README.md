@@ -1,3 +1,3 @@
-# AABB Collison
+# AABB Collision
 
 AABB collision using SFML.
