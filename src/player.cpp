@@ -27,6 +27,7 @@ void Player::horizontalMovement(float deltaTime) {
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         direction.x = 1.0f;
     }
+
     rect.move(sf::Vector2f(direction.x * deltaTime * speed, 0.0f));
 }
 
@@ -50,6 +51,7 @@ void Player::verticalMovement(float deltaTime) {
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
         direction.y = 1.0f;
     }
+
     rect.move(sf::Vector2f(0.0f, direction.y * deltaTime * speed));
 }
 
@@ -68,15 +70,15 @@ void Player::verticalCollisions(std::vector<Tile> &tileGroup) {
 void Player::camera(sf::RenderWindow &window) {
     if (rect.getPosition().x + rect.getSize().x / 2.0f < window.getView().getCenter().x - window.getSize().x / 2.0f) {
         window.setView(sf::View(sf::FloatRect(window.getView().getCenter().x - window.getSize().x / 2.0f * 3.0f,
-                                              window.getView().getCenter().y - window.getSize().y / 2.0f, window.getSize().x, window.getSize().y)));
+        window.getView().getCenter().y - window.getSize().y / 2.0f, window.getSize().x, window.getSize().y)));
     } else if (rect.getPosition().x + rect.getSize().x / 2.0f > window.getView().getCenter().x + window.getSize().x / 2.0f) {
         window.setView(sf::View(sf::FloatRect(window.getView().getCenter().x + window.getSize().x / 2.0f * 3.0f,
-                                              window.getView().getCenter().y + window.getSize().y / 2.0f, window.getSize().x, window.getSize().y)));
+        window.getView().getCenter().y + window.getSize().y / 2.0f, window.getSize().x, window.getSize().y)));
     } else if (rect.getPosition().y + rect.getSize().y / 2.0f < window.getView().getCenter().y - window.getSize().y / 2.0f) {
         window.setView(sf::View(sf::FloatRect(window.getView().getCenter().x + window.getSize().x / 2.0f,
-                                              window.getView().getCenter().y - window.getSize().y / 2.0f * 3.0f, window.getSize().x, window.getSize().y)));
+        window.getView().getCenter().y - window.getSize().y / 2.0f * 3.0f, window.getSize().x, window.getSize().y)));
     } else if (rect.getPosition().y + rect.getSize().y / 2.0f > window.getView().getCenter().y + window.getSize().y / 2.0f) {
         window.setView(sf::View(sf::FloatRect(window.getView().getCenter().x - window.getSize().x / 2.0f,
-                                              window.getView().getCenter().y + window.getSize().y / 2.0f * 3.0f, window.getSize().x, window.getSize().y)));
+        window.getView().getCenter().y + window.getSize().y / 2.0f * 3.0f, window.getSize().x, window.getSize().y)));
     }
 }

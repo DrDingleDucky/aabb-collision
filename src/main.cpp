@@ -22,11 +22,7 @@ void loadLevel(std::string map, std::vector<Player> &playerGroup, std::vector<Ti
             if (line[row_index] == 't') {
                 tileGroup.push_back(Tile(sf::Color(0, 0, 0), sf::Vector2f(48.0f, 48.0f), sf::Vector2f(x, y)));
             } else if (line[row_index] == 'p') {
-                playerGroup.push_back(Player(
-                    255.0f,
-                    sf::Color(255, 255, 255),
-                    sf::Vector2f(48.0f, 48.0f),
-                    sf::Vector2f(x, y)));
+                playerGroup.push_back(Player(255.0f,sf::Color(255, 255, 255),sf::Vector2f(48.0f, 48.0f),sf::Vector2f(x, y)));
             }
         }
         column_index++;

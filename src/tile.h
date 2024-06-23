@@ -4,11 +4,11 @@
 #include <SFML/Graphics.hpp>
 
 class Tile {
-  public:
-    sf::RectangleShape rect;
+    public:
+        sf::RectangleShape rect;
 
-    Tile(sf::Color color, sf::Vector2f size, sf::Vector2f pos);
+        Tile(sf::Color color, sf::Vector2f size, sf::Vector2f pos);
 
-    void draw(sf::RenderWindow &window);
+        void draw(sf::RenderWindow &window);
 };
 #endif

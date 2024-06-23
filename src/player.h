@@ -6,27 +6,27 @@
 #include "tile.h"
 
 class Player {
-  public:
-    Player(float speed, sf::Color color, sf::Vector2f size, sf::Vector2f pos);
+    public:
+        Player(float speed, sf::Color color, sf::Vector2f size, sf::Vector2f pos);
 
-    void update(sf::RenderWindow &window, float deltaTime, std::vector<Tile> &tileGroup);
+        void update(sf::RenderWindow &window, float deltaTime, std::vector<Tile> &tileGroup);
 
-    void draw(sf::RenderWindow &window);
+        void draw(sf::RenderWindow &window);
 
-  private:
-    float speed;
+        private:
+        float speed;
 
-    sf::Vector2f direction;
-    sf::RectangleShape rect;
+        sf::Vector2f direction;
+        sf::RectangleShape rect;
 
-    void horizontalMovement(float deltaTime);
+        void horizontalMovement(float deltaTime);
 
-    void horizontalCollisions(std::vector<Tile> &tileGroup);
+        void horizontalCollisions(std::vector<Tile> &tileGroup);
 
-    void verticalMovement(float deltaTime);
+        void verticalMovement(float deltaTime);
 
-    void verticalCollisions(std::vector<Tile> &tileGroup);
+        void verticalCollisions(std::vector<Tile> &tileGroup);
 
-    void camera(sf::RenderWindow &window);
+        void camera(sf::RenderWindow &window);
 };
 #endif
